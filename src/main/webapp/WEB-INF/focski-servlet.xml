@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages"/>
+    </bean>
+
+    <bean name="/createAdherent.htm" class="org.franck.focski.web.CreateAdherentCtrl">
+        <property name="sessionForm" value="true"/>
+        <property name="commandName" value="formBean"/>
+        <property name="commandClass" value="org.franck.focski.modele.Adherent"/>
+        <property name="formView" value="createAdherent"/>
+        <property name="successView" value="createAdherentOk"/>
+        <property name="focskiService" ref="focskiService"/>
+        <property name="validator">
+            <bean class="org.franck.focski.web.FormAdherentValidator"/>
+        </property>
+    </bean>
+    <bean name="/adCreateAdherent.htm" class="org.franck.focski.web.CreateAdherentCtrl">
+        <property name="sessionForm" value="true"/>
+        <property name="commandName" value="formBean"/>
+        <property name="commandClass" value="org.franck.focski.modele.Adherent"/>
+        <property name="formView" value="adCreateAdherent"/>
+        <property name="successView" value="admin-adhesion"/>
+        <property name="focskiService" ref="focskiService"/>
+        <property name="validator">
+            <bean class="org.franck.focski.web.FormAdherentValidator"/>
+        </property>
+    </bean>
+ 
+    <bean name="/searchAdherentByEmail.htm" class="org.franck.focski.web.SearchAdherentByEmailCtrl">
+        <property name="focskiService" ref="focskiService"/>
+    </bean>
+ 
+     <bean name="/createLicencie.htm" class="org.franck.focski.web.CreateLicencieCtrl">
+        <property name="sessionForm" value="true"/>
+        <property name="commandName" value="formBean"/>
+        <property name="commandClass" value="org.franck.focski.modele.Licencie"/>
+        <property name="formView" value="createLicencie"/>
+        <property name="successView" value="accueilAdherent"/>
+        <property name="arretBus" ref="arretBus"/>
+        <property name="niveauSki" ref="niveauSki"/>
+        <property name="lesSeances" ref="lesSeances"/>
+        <property name="lesAdhesions" ref="lesAdhesions"/>
+        <property name="focskiService" ref="focskiService"/>
+        <property name="validator">
+            <bean class="org.franck.focski.web.FormLicencieValidator"/>
+        </property>
+     </bean>
+     <bean name="/adCreateLicencie.htm" class="org.franck.focski.web.CreateLicencieByAdminCtrl">
+        <property name="sessionForm" value="true"/>
+        <property name="commandName" value="formBean"/>
+        <property name="commandClass" value="org.franck.focski.modele.Licencie"/>
+        <property name="formView" value="adCreateLicencie"/>
+        <property name="successView" value="admin-adhesion"/>
+        <property name="arretBus" ref="arretBus"/>
+        <property name="niveauSki" ref="niveauSki"/>
+        <property name="lesSeances" ref="lesSeances"/>
+        <property name="lesAdhesions" ref="lesAdhesions"/>
+        <property name="focskiService" ref="focskiService"/>
+        <property name="validator">
+            <bean class="org.franck.focski.web.FormLicencieValidator"/>
+        </property>
+     </bean>
+ 
+    <bean name="/accueil.htm" class="org.franck.focski.web.AccueilAdherentCtrl">
+        <property name="focskiService" ref="focskiService"/>
+    </bean>
+    <bean name="/admin-adhesion.htm" class="org.franck.focski.web.AccueilAdminCtrl">
+    </bean>
+ 
+    <bean name="/editUnAdherent.htm" class="org.franck.focski.web.ModifAdherentCtrl">
+        <property name="sessionForm" value="true"/>
+        <property name="commandName" value="adherent"/>
+        <property name="commandClass" value="org.franck.focski.modele.Adherent"/>
+        <property name="formView" value="editUnAdherent"/>
+        <property name="successView" value="createAdherentOk"/>
+        <property name="focskiService" ref="focskiService"/>
+        <property name="validator">
+            <bean class="org.franck.focski.web.FormAdherentValidator"/>
+        </property>
+    </bean>
+
+    <bean name="/gererAdherents.htm" class="org.franck.focski.web.GererAdherentsCtrl">
+        <property name="sessionForm" value="true"/>
+        <property name="commandName" value="adherent"/>
+        <property name="commandClass" value="org.franck.focski.modele.Adherent"/>
+        <property name="formView" value="gererAdherents"/>
+        <property name="successView" value="showAllAdherents"/>
+        <property name="focskiService" ref="focskiService"/>
+    </bean>
+
+    <bean name="/gererLicencies.htm" class="org.franck.focski.web.GererLicenciesCtrl">
+        <property name="sessionForm" value="true"/>
+        <property name="commandName" value="licencie"/>
+        <property name="commandClass" value="org.franck.focski.modele.Licencie"/>
+        <property name="formView" value="gererLicencies"/>
+        <property name="successView" value="showAllAdherents"/>
+        <property name="focskiService" ref="focskiService"/>
+        <property name="lesStatus" ref="lesStatus"/>
+        <property name="lesForfaits" ref="lesForfaits"/>
+        <property name="arretBus" ref="arretBus"/>
+    </bean>
+
+    <bean name="/editUnLicencie.htm" class="org.franck.focski.web.ModifLicencieCtrl">
+        <property name="sessionForm" value="true"/>
+        <property name="commandName" value="licencie"/>
+        <property name="commandClass" value="org.franck.focski.modele.Licencie"/>
+        <property name="formView" value="editUnLicencie"/>
+        <property name="successView" value="accueilAdherent"/>
+        <property name="lesSeances" ref="lesSeances"/>
+        <property name="arretBus" ref="arretBus"/>
+        <property name="niveauSki" ref="niveauSki"/>
+        <property name="lesAdhesions" ref="lesAdhesions"/>
+        <property name="focskiService" ref="focskiService"/>
+        <property name="validator">
+            <bean class="org.franck.focski.web.FormLicencieValidator"/>
+        </property>
+    </bean>
+
+    <bean name="/excelExtract.htm" class="org.franck.focski.web.ExcelExtractCtrl">
+        <property name="focskiService" ref="focskiService"/>
+    </bean>
+
+	<bean id="niveauSki" class="org.franck.focski.modele.LesNiveauxDeSki">
+		<property name="listDesNiveaux">
+			<list>
+				<value>Je ne sais pas</value>
+				<value>Débutant</value>
+				<value>Débutant+</value>
+				<value>Ski Etoile *</value>
+				<value>Ski Etoile **</value>
+				<value>Ski Etoile ***</value>
+				<value>Ski Etoile Or</value>
+				<value>Ski Flèche</value>
+				<value>Ski Compétition</value>
+				<value>Surf 1</value>
+				<value>Surf 2</value>
+				<value>Surf 3</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="lesAdhesions" class="org.franck.focski.modele.LesTypesDAdhesion">
+		<property name="listDesTypesAdhesion">
+			<list>
+				<value>Ski éducatif ou de loisir</value>
+				<value>Surf éducatif ou de loisir</value>
+				<value>Ski de compétition</value>
+				<value>Adhésion simple</value>
+				<value>Bénévole</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="lesForfaits" class="org.franck.focski.modele.LesTypesDeForfaits">
+		<property name="listDesTypesDeForfaits">
+			<list>
+				<value>** Non défini **</value>
+				<value>Pas de forfait (via FOC)</value>
+				<value>Forfait -5ans (Gratuit)</value>
+				<value>Forfait de 6 à 9 ans</value>
+				<value>Forfait de 10 à 17 ans</value>
+				<value>Forfait étudiant</value>
+				<value>Forfait Adulte</value>
+				<value>Forfait Famille</value>
+				<value>Forfait Sénior</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="lesSeances" class="org.franck.focski.modele.LesSeances">
+		<property name="listDesSeances">
+			<list>
+				<value>Aucune</value>
+				<value>Sortie du Mercredi</value>
+				<value>Sortie du Samedi</value>
+				<value>Les 2 : Mercredi et Samedi</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="lesStatus" class="org.franck.focski.modele.LesStatus">
+        <property name="listDesStatus">
+			<list>
+				<value>Crée</value>
+				<value>Facture transmise</value>
+				<value>Paiement reçu</value>
+				<value>Valide</value>
+			</list>
+        </property>
+	</bean>
+
+	<!--  Affichage de tous les adherents -->
+	<bean name="/showAllAdherents.htm"	class="org.franck.focski.web.ShowListAdherentCtrl"
+		p:focskiService-ref="focskiService" p:vue="showAllAdherents"/>
+
+	<!--  Affichage des comptes d'un client à sélectionner -->
+	<!--  Affichage de la liste des clients
+	<bean name="/showClientsForDetails.htm"
+		class="org.franck.focski.web.controller.ShowAllClientsForDetails"
+		p:successView="showAccountsForClient" p:formView="selectClient"
+		p:commandName="formBean"
+		p:commandClass="org.franck.focski.web.controller.util.SelectClientFormHolder"
+		p:focskiService-ref="focskiService" />
+ -->
+
+	<!--  Creation d'un nouveau Client 
+	<bean name="/clientForm.htm"
+		class="org.franck.focski.web.controller.SaveNewClient" p:successView="index"
+		p:formView="clientForm" p:commandName="formBean"
+		p:validator-ref="clientValidator"
+		p:commandClass="org.franck.focski.modele.Client"
+		p:focskiService-ref="focskiService" />
+-->
+
+<!-- 	<bean id="clientValidator"
+		class="org.franck.focski.web.controller.util.ClientValidator" />
+ -->
+ 
+	<!--  Déclaration des fichiers de ressources pour les messages d'erreurs
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="message" />
+	</bean>
+-->
+
+	<!--  Paramétrage -->
+	
+	<bean class="org.springframework.web.servlet.view.XmlViewResolver">
+	     <property name="location">
+	        <value>/WEB-INF/spring-excel-views.xml</value>
+	     </property>
+	     <property name="order" value="0" />
+	</bean>
+	
+	<bean id="viewResolver"	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"> </property>
+		<property name="prefix" value="/WEB-INF/html-jsp/"></property>
+		<property name="suffix" value=".jsp"></property>
+		<property name="order" value="1" />
+	</bean>
+
+</beans>

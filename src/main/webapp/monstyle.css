@@ -1,0 +1,53 @@
+  body {
+	padding-left: 11em;
+	font-family: Georgia, "Times New Roman",Times, serif;
+    	color: black;
+    	background-color: grey }
+
+ ul.navbar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 2em;
+    left: 1em;
+    width: 9em }
+
+h1 {
+	font-family: Helvetica, Geneva, Arial,
+	SunSans-Regular, sans-serif }
+
+ul.navbar li {
+	background: white;
+	margin: 0.5em 0;
+	padding: 0.3em;
+	border-right: 1em solid black }
+
+ul.navbar a {
+	text-decoration: none }
+
+a:link {
+	color: blue }
+
+a:visited {
+	color: purple }
+
+address {
+	margin-top: 1em;
+	padding-top: 1em;
+	border-top: thin dotted }
+
+form
+   { background-image:url(background.gif); padding:20px; border:6px solid #DDDDDD; }
+ td, input, select, textarea
+   { font-size:13px; font-family:Verdana,sans-serif; font-weight:bold; }
+ input, select, textarea
+   { color:#0000CC; }
+ .passage, .champ
+   { background-color:#FFFFAA; width:300px; border:6px solid #DDDDDD; }
+ .choix
+   { background-color:#DDFFFF; width:300px; border:6px solid #DDDDDD; }
+ .cocher, .option
+   { background-color:#DDFFFF; border:1px solid #DDDDDD; }
+ .Bouton
+   { background-color:#AAAAAA; color:#FFFFFF; width:120px; border:6px solid #DDDDDD; }

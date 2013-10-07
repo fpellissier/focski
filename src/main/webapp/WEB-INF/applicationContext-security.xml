@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - Application context containing authentication, channel
+  - security and web URI beans.
+  -
+  - Only used by "filter" artifact.
+  -
+  -->
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+			xmlns:beans="http://www.springframework.org/schema/beans"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+								http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.xsd">
+
+	<global-method-security jsr250-annotations="enabled" />
+
+	<http auto-config="true">
+		<intercept-url pattern="/login.jsp" filters="none"/>
+		<intercept-url pattern="/createAdherent.htm" filters="none"/>
+		<intercept-url pattern="/searchAdherentByEmail.htm*" filters="none"/>
+		<intercept-url pattern="/**" access="ROLE_ADHERENT,ROLE_ADMIN" />
+		<form-login login-page="/login.jsp" default-target-url="/accueil.htm" always-use-default-target="true" />
+		<logout logout-url="/j_spring_security_logout" logout-success-url="/"/>
+	</http>
+	
+	<authentication-provider>
+		<jdbc-user-service data-source-ref="dataSource"
+			users-by-username-query="SELECT U.username, U.password, U.enabled FROM users U where U.username=?"
+			authorities-by-username-query="SELECT u.username, a.authority FROM users u JOIN authorities a ON u.username = a.username WHERE u.username=?" />
+	</authentication-provider>
+</beans:beans>
